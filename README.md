@@ -13,14 +13,14 @@ brew install kubectx
 
 ### Install aws_eks_ecr shortcut script using below command:  
 
-github enterprise sso username and token is required  
-BU values is required to get AWS account details:
+`BU` values is required to get AWS account details:
 
 - `devops`: DevOps Account (office)
 - `personal`: Personal Account (personal)
 - `all`: Combines all accounts config from aws_config directory
 
 ```
+# Replace <BU> with filename (i.e, devops/personal/all) from aws_config directory
 curl -sSL https://raw.githubusercontent.com/ajaykumar4/aws-eks-ecr-script/main/install.sh | bash -s -- <BU>
 ```
 
