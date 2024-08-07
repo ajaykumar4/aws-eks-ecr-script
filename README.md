@@ -9,6 +9,7 @@ installing packages using brew for macos and linux
 brew install awscli
 brew install fzf
 brew install kubectx
+brew install kubectl
 ```
 
 ### Install aws_eks_ecr shortcut script using below command:  
