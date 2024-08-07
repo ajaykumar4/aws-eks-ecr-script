@@ -1,0 +1,41 @@
+function container_log() {
+  local deployment_name=$1
+  local namespace=$2
+  local pod_name=$(kubectl get pods --namespace=$namespace -l app=$deployment_name -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | fzf)
+  kubectl logs --namespace=$namespace $pod_name -c $deployment_name
+}
+
+function all_container_log() {
+  local deployment_name=$1
+  local namespace=$2
+  local pod_name=$(kubectl get pods --namespace=$namespace -l app=$deployment_name -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | fzf)
+  kubectl logs --namespace=$namespace $pod_name --all-containers=true
+}
+
+function download_container_log() {
+  local deployment_name=$1
+  local namespace=$2
+  local pod_name=$(kubectl get pods --namespace=$namespace -l app=$deployment_name -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | fzf)
+  kubectl logs --namespace=$namespace $pod_name -c $deployment_name > $pod_name-container.log
+}
+
+function download_all_container_log() {
+  local deployment_name=$1
+  local namespace=$2
+  local pod_name=$(kubectl get pods --namespace=$namespace -l app=$deployment_name -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | fzf)
+  kubectl logs --namespace=$namespace $pod_name --all-containers=true > $pod_name-all.log
+}
+
+function container_describe() {
+  local deployment_name=$1
+  local namespace=$2
+  local pod_name=$(kubectl get pods --namespace=$namespace -l app=$deployment_name -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | fzf)
+  kubectl describe pod $pod_name --namespace=$namespace
+}
+
+function download_container_describe() {
+  local deployment_name=$1
+  local namespace=$2
+  local pod_name=$(kubectl get pods --namespace=$namespace -l app=$deployment_name -o=jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | fzf)
+  kubectl describe pod $pod_name --namespace=$namespace > $pod_name-describe.log
+}

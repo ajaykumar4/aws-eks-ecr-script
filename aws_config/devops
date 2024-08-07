@@ -1,0 +1,13 @@
+[profile dev-env]
+region = eu-west-1
+sso_start_url = https://yoursso.awsapps.com/start
+sso_region = eu-west-1
+sso_account_id = 15973654321
+sso_role_name = DevOps
+
+[profile prod-env]
+region = eu-west-1
+sso_start_url = https://yoursso.awsapps.com/start
+sso_region = eu-west-1
+sso_account_id = 129457654361
+sso_role_name = DevOps
